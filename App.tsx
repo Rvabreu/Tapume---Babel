@@ -93,7 +93,7 @@ const App: React.FC = () => {
       {/* Hero Section */}
       <main className="relative z-10 container mx-auto px-6 pt-16 pb-24 flex flex-col items-center text-center">
         
-        {/* BRAND CENTER - Perfeitamente centralizado */}
+        {/* BRAND CENTER */}
         <div className="relative mb-20 animate-in fade-in zoom-in duration-1000 group w-full flex justify-center">
            <div className="absolute inset-0 bg-purple-600/20 rounded-full blur-[120px] opacity-30 scale-150 animate-pulse pointer-events-none"></div>
            <BrandText size="hero" />
@@ -104,17 +104,17 @@ const App: React.FC = () => {
            <span className="text-sm font-black text-zinc-100 uppercase tracking-[0.15em]">Sacie sua fome com o xis mais rock n' roll da cidade</span>
         </div>
 
-        <h1 className="text-7xl md:text-[110px] lg:text-[140px] font-black italic tracking-tighter leading-[0.75] font-heading mb-14 uppercase">
-          ONDE O <span className="text-yellow-400 text-glow-yellow">ROCK</span><br />
-          ENCONTRA O <span className="text-purple-600 text-glow-purple">SABOR.</span>
+        <h1 className="text-7xl md:text-[110px] lg:text-[140px] font-black italic tracking-tighter leading-[0.75] font-heading mb-14">
+          <span className="uppercase text-white">PEÇA SEU</span> <span className="text-yellow-400 text-glow-yellow uppercase">XIS,</span><br />
+          <span className="text-purple-600 text-glow-purple lowercase text-[80px] md:text-[130px] lg:text-[160px]">aqui!</span>
         </h1>
 
-        <div className="max-w-4xl mx-auto space-y-8 mb-16">
-          <p className="text-zinc-400 text-xl md:text-3xl font-medium leading-relaxed">
-            O Babel Studio Bar está iniciando uma nova forma de pedir Xis, em breve!
+        <div className="max-w-5xl mx-auto space-y-10 mb-16">
+          <p className="text-zinc-400 text-xl md:text-3xl font-black leading-relaxed uppercase tracking-tighter italic">
+            O BABEL STUDIO BAR ESTÁ INICIANDO UMA NOVA FORMA DE ACABAR COM A SUA FOME..
           </p>
-          <div className="border-y-2 border-yellow-400/20 py-8">
-            <span className="text-white font-black italic text-4xl md:text-6xl tracking-tighter uppercase block">Aguardem..</span>
+          <div className="border-y-2 border-yellow-400/20 py-10">
+            <span className="text-white font-black italic text-5xl md:text-7xl tracking-tighter uppercase block">Aguardem..</span>
           </div>
         </div>
 
@@ -254,7 +254,9 @@ const App: React.FC = () => {
               <span className="text-zinc-500 text-[9px] font-black uppercase tracking-widest group-hover:text-zinc-300 transition-colors">
                 Powered by AI Experience
               </span>
-              <Flame className="w-4 h-4 text-orange-600 fill-current animate-pulse" />
+              <div className="flex items-center gap-1">
+                <Flame className="w-4 h-4 text-orange-600 fill-current animate-pulse" />
+              </div>
             </div>
           </div>
         </div>
