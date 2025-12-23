@@ -3,13 +3,13 @@ import React, { useState, useEffect } from 'react';
 import { 
   Instagram, 
   ArrowRight, 
-  MapPin,
-  Flame,
-  Zap,
-  Truck,
-  ExternalLink,
-  Music,
-  Clock
+  MapPin, 
+  Flame, 
+  Zap, 
+  Truck, 
+  ExternalLink, 
+  Music, 
+  Clock 
 } from 'lucide-react';
 
 const BrandText: React.FC<{ size?: 'sm' | 'md' | 'lg' | 'hero' }> = ({ size = 'md' }) => {
@@ -21,13 +21,13 @@ const BrandText: React.FC<{ size?: 'sm' | 'md' | 'lg' | 'hero' }> = ({ size = 'm
   };
 
   return (
-    <div className={`flex flex-col items-center md:items-start select-none`}>
+    <div className="flex flex-col items-center select-none text-center">
       <h2 className={`${sizeClasses[size]} font-black italic tracking-tighter font-heading leading-none text-white transition-all`}>
         BABEL
       </h2>
-      <div className="flex items-center gap-2 w-full">
+      <div className="flex items-center gap-2 w-full max-w-sm md:max-w-none justify-center">
         <div className="flex-1 h-[2px] bg-purple-600 hidden md:block"></div>
-        <span className={`${size === 'hero' ? 'text-xl md:text-3xl' : 'text-[10px]'} font-black text-yellow-400 uppercase tracking-[0.4em] leading-none whitespace-nowrap`}>
+        <span className={`${size === 'hero' ? 'text-xl md:text-3xl' : 'text-[10px]'} font-black text-yellow-400 uppercase tracking-[0.4em] leading-none whitespace-nowrap px-2`}>
           STUDIO BAR
         </span>
         <div className="flex-1 h-[2px] bg-purple-600 hidden md:block"></div>
@@ -80,8 +80,8 @@ const App: React.FC = () => {
       <nav className="relative z-10 container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-6 border-b border-white/5 bg-[#080808]/40 backdrop-blur-xl">
         <div className="flex items-center gap-6 group cursor-pointer">
           <BrandText size="sm" />
-          <div className="h-10 w-[1px] bg-white/10 hidden md:block mx-2"></div>
-          <span className="text-[10px] text-zinc-500 font-bold tracking-[0.4em] uppercase">Passo Fundo / RS</span>
+          <div className="h-10 w-[1px] bg-white/10 hidden lg:block mx-2"></div>
+          <span className="text-[10px] text-zinc-500 font-bold tracking-[0.4em] uppercase hidden md:block">Passo Fundo / RS</span>
         </div>
         
         <div className="flex items-center gap-4 bg-yellow-400 text-black px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-[0.2em] shadow-[0_0_30px_rgba(251,191,36,0.3)] animate-pulse">
@@ -93,9 +93,9 @@ const App: React.FC = () => {
       {/* Hero Section */}
       <main className="relative z-10 container mx-auto px-6 pt-16 pb-24 flex flex-col items-center text-center">
         
-        {/* BRAND CENTER */}
-        <div className="relative mb-20 animate-in fade-in zoom-in duration-1000 group">
-           <div className="absolute inset-0 bg-purple-600/20 rounded-full blur-[120px] opacity-30 scale-150 animate-pulse"></div>
+        {/* BRAND CENTER - Perfeitamente centralizado */}
+        <div className="relative mb-20 animate-in fade-in zoom-in duration-1000 group w-full flex justify-center">
+           <div className="absolute inset-0 bg-purple-600/20 rounded-full blur-[120px] opacity-30 scale-150 animate-pulse pointer-events-none"></div>
            <BrandText size="hero" />
         </div>
 
@@ -109,11 +109,14 @@ const App: React.FC = () => {
           ENCONTRA O <span className="text-purple-600 text-glow-purple">SABOR.</span>
         </h1>
 
-        <p className="max-w-4xl text-zinc-400 text-xl md:text-3xl mb-16 font-medium leading-relaxed">
-          O Babel Studio Bar está iniciando uma nova forma de pedir Xis, em breve!
-          <br />
-          <span className="text-white font-black italic mt-6 block text-4xl md:text-5xl border-y-2 border-yellow-400/20 py-8 tracking-tighter uppercase">Aguardem..</span>
-        </p>
+        <div className="max-w-4xl mx-auto space-y-8 mb-16">
+          <p className="text-zinc-400 text-xl md:text-3xl font-medium leading-relaxed">
+            O Babel Studio Bar está iniciando uma nova forma de pedir Xis, em breve!
+          </p>
+          <div className="border-y-2 border-yellow-400/20 py-8">
+            <span className="text-white font-black italic text-4xl md:text-6xl tracking-tighter uppercase block">Aguardem..</span>
+          </div>
+        </div>
 
         {/* Countdown */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24">
@@ -146,7 +149,7 @@ const App: React.FC = () => {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-black/60 border-2 border-zinc-800 rounded-3xl px-10 py-7 text-white focus:outline-none focus:border-yellow-400 transition-all placeholder:text-zinc-700 font-black uppercase text-base"
+                className="flex-1 bg-black/60 border-2 border-zinc-800 rounded-3xl px-10 py-7 text-white focus:outline-none focus:border-yellow-400 transition-all placeholder:text-zinc-700 font-black uppercase text-base text-center md:text-left"
               />
               <button className="bg-yellow-400 text-black font-black px-14 py-7 rounded-3xl hover:bg-white transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center gap-4 shadow-xl">
                 INSCREVER-SE <ArrowRight className="w-7 h-7" />
@@ -165,20 +168,20 @@ const App: React.FC = () => {
         <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 items-start">
             
-            {/* Coluna 1: Marca em texto */}
+            {/* Coluna 1: Marca em texto centralizado */}
             <div className="md:col-span-5 flex flex-col items-center md:items-start space-y-8">
-              <div className="group">
+              <div className="w-full flex justify-center md:justify-start">
                 <BrandText size="sm" />
               </div>
               
-              <div className="space-y-6 text-center md:text-left">
+              <div className="space-y-6 text-center md:text-left w-full">
                 <div className="space-y-2">
                   <p className="text-white text-xl font-black uppercase tracking-tighter italic flex items-center justify-center md:justify-start gap-2">
                     <Music className="w-5 h-5 text-yellow-400" /> O Sabor que faz Barulho
                   </p>
                   <p className="text-zinc-500 font-bold uppercase tracking-[0.1em] text-xs">Música • Coquetéis • Cervejas • Lanches</p>
                 </div>
-                <p className="text-zinc-400 text-base leading-relaxed max-w-sm">
+                <p className="text-zinc-400 text-base leading-relaxed max-w-sm mx-auto md:mx-0">
                   O lendário ponto de encontro de Passo Fundo renasce focado na experiência suprema do Xis Gaúcho.
                 </p>
                 <a 
@@ -236,8 +239,8 @@ const App: React.FC = () => {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div className="flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+          <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+            <div className="flex flex-col md:flex-row items-center gap-4">
               <span className="text-zinc-600 text-[10px] uppercase font-black tracking-[0.3em]">
                 Babel Studio Bar © 2026
               </span>
