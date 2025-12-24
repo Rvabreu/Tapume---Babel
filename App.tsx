@@ -109,7 +109,7 @@ const App: React.FC = () => {
           <span className="text-purple-600 text-glow-purple lowercase text-[80px] md:text-[130px] lg:text-[160px]">aqui!</span>
         </h1>
 
-        <div className="max-w-5xl mx-auto space-y-10 mb-16">
+        <div className="max-w-5xl mx-auto space-y-10 mb-24">
           <p className="text-zinc-400 text-xl md:text-3xl font-black leading-relaxed uppercase tracking-tighter italic">
             O BABEL STUDIO BAR ESTÁ INICIANDO UMA NOVA FORMA DE ACABAR COM A SUA FOME..
           </p>
@@ -119,7 +119,7 @@ const App: React.FC = () => {
         </div>
 
         {/* Countdown */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-32">
           {[
             { label: 'Dias', value: timeLeft.days },
             { label: 'Horas', value: timeLeft.hours },
