@@ -166,15 +166,15 @@ const App: React.FC = () => {
       {/* Footer */}
       <footer className="relative z-10 bg-[#050505] border-t border-white/5 pt-24 pb-12 overflow-hidden">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 items-start">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 items-stretch">
             
-            {/* Coluna 1: Marca em texto centralizado */}
+            {/* Coluna 1: Info */}
             <div className="md:col-span-5 flex flex-col items-center md:items-start space-y-8">
               <div className="w-full flex justify-center md:justify-start">
                 <BrandText size="sm" />
               </div>
               
-              <div className="space-y-6 text-center md:text-left w-full">
+              <div className="flex-1 space-y-6 text-center md:text-left w-full">
                 <div className="space-y-2">
                   <p className="text-white text-xl font-black uppercase tracking-tighter italic flex items-center justify-center md:justify-start gap-2">
                     <Music className="w-5 h-5 text-yellow-400" /> O Sabor que faz Barulho
@@ -184,11 +184,14 @@ const App: React.FC = () => {
                 <p className="text-zinc-400 text-base leading-relaxed max-w-sm mx-auto md:mx-0">
                   O lendário ponto de encontro de Passo Fundo renasce focado na experiência suprema do Xis Gaúcho.
                 </p>
+              </div>
+
+              <div className="pt-4 w-full flex justify-center md:justify-start">
                 <a 
                   href="https://linktr.ee/babelstudiobar" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-3 rounded-full text-yellow-400 transition-all font-black text-xs uppercase tracking-[0.2em] group"
+                  className="inline-flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 px-8 py-4 rounded-full text-yellow-400 transition-all font-black text-xs uppercase tracking-[0.2em] group min-h-[56px]"
                 >
                   ACESSAR LINKTREE <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                 </a>
@@ -196,43 +199,47 @@ const App: React.FC = () => {
             </div>
 
             {/* Coluna 2: Social */}
-            <div className="md:col-span-3 flex flex-col items-center py-8 md:py-0">
-              <h4 className="text-xs font-black text-zinc-600 uppercase tracking-[0.5em] mb-10 italic">CONEXÃO DIRETA</h4>
-              <a 
-                href="https://www.instagram.com/babelstudiobar/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex flex-col items-center group"
-              >
-                <div className="relative">
-                  <div className="absolute inset-0 bg-purple-600 blur-2xl opacity-0 group-hover:opacity-40 transition-opacity"></div>
-                  <div className="relative p-8 bg-zinc-900/80 rounded-[2.5rem] text-zinc-400 group-hover:text-white border border-white/5 group-hover:border-purple-500/50 transition-all duration-500 shadow-2xl scale-100 group-hover:scale-110">
-                    <Instagram className="w-12 h-12" />
+            <div className="md:col-span-3 flex flex-col items-center">
+              <h4 className="text-xs font-black text-zinc-600 uppercase tracking-[0.5em] mb-10 italic h-6">CONEXÃO DIRETA</h4>
+              <div className="flex-1 flex flex-col items-center justify-center">
+                <a 
+                  href="https://www.instagram.com/babelstudiobar/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex flex-col items-center group"
+                >
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-purple-600 blur-2xl opacity-0 group-hover:opacity-40 transition-opacity"></div>
+                    <div className="relative p-8 bg-zinc-900/80 rounded-[2.5rem] text-zinc-400 group-hover:text-white border border-white/5 group-hover:border-purple-500/50 transition-all duration-500 shadow-2xl scale-100 group-hover:scale-110">
+                      <Instagram className="w-12 h-12" />
+                    </div>
                   </div>
-                </div>
-                <span className="mt-8 text-yellow-400 font-black uppercase italic tracking-[0.3em] text-sm group-hover:text-white transition-colors">
+                </a>
+              </div>
+              <div className="pt-4 flex flex-col items-center min-h-[56px] justify-center">
+                <span className="text-yellow-400 font-black uppercase italic tracking-[0.3em] text-sm group-hover:text-white transition-colors">
                   @babelstudiobar
                 </span>
-                <span className="mt-2 text-[10px] font-bold text-zinc-600 uppercase tracking-widest">Siga no Instagram</span>
-              </a>
+                <span className="text-[10px] font-bold text-zinc-600 uppercase tracking-widest">Instagram Oficial</span>
+              </div>
             </div>
 
-            {/* Coluna 3: Localização */}
-            <div className="md:col-span-4 flex flex-col items-center md:items-end space-y-8 text-center md:text-right">
-              <div className="bg-zinc-900/30 border border-white/5 p-8 rounded-[2rem] w-full max-w-xs space-y-6">
-                <div className="space-y-2">
-                  <h4 className="text-xs font-black text-zinc-600 uppercase tracking-[0.3em]">LOCALIZAÇÃO</h4>
-                  <p className="text-white text-2xl font-black italic tracking-tighter flex items-center justify-center md:justify-end gap-2">
-                    PASSO FUNDO <MapPin className="w-5 h-5 text-purple-500" />
-                  </p>
-                  <p className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.4em]">Rio Grande do Sul</p>
-                </div>
-                <div className="h-[1px] bg-white/5 w-full"></div>
-                <div className="space-y-2">
-                  <h4 className="text-xs font-black text-zinc-600 uppercase tracking-[0.3em]">STATUS ATUAL</h4>
-                  <div className="flex items-center justify-center md:justify-end gap-2 text-yellow-400 font-black italic text-sm">
-                    <Clock className="w-4 h-4" /> EM CONSTRUÇÃO
+            {/* Coluna 3: Localização & Status */}
+            <div className="md:col-span-4 flex flex-col items-center md:items-end">
+              <h4 className="text-xs font-black text-zinc-600 uppercase tracking-[0.5em] mb-10 italic h-6">LOCALIZAÇÃO</h4>
+              <div className="flex-1 w-full flex flex-col items-center md:items-end justify-center">
+                <div className="bg-zinc-900/30 border border-white/5 p-8 rounded-[2rem] w-full max-w-xs space-y-4">
+                  <div className="space-y-1 text-center md:text-right">
+                    <p className="text-white text-2xl font-black italic tracking-tighter flex items-center justify-center md:justify-end gap-2">
+                      PASSO FUNDO <MapPin className="w-5 h-5 text-purple-500" />
+                    </p>
+                    <p className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.4em]">Rio Grande do Sul</p>
                   </div>
+                </div>
+              </div>
+              <div className="pt-4 flex items-center min-h-[56px]">
+                <div className="flex items-center gap-2 text-yellow-400 font-black italic text-sm uppercase tracking-widest">
+                  <Clock className="w-4 h-4" /> EM CONSTRUÇÃO
                 </div>
               </div>
             </div>
