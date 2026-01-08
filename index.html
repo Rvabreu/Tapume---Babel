@@ -6,10 +6,72 @@
     <title>Babel Studio Bar | O Novo Xis está chegando</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
     
-    <!-- Google Fonts mantidos para carregamento otimizado -->
+    <script>
+        // Suppress Tailwind CDN production warning to keep console clean
+        (function() {
+            const originalWarn = console.warn;
+            console.warn = function(...args) {
+                if (args.some(arg => typeof arg === 'string' && arg.includes('cdn.tailwindcss.com'))) {
+                    return;
+                }
+                originalWarn.apply(console, args);
+            };
+        })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Grotesk:wght@300;500;700&family=Barlow+Condensed:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Barlow Condensed', 'sans-serif'],
+                    },
+                    animation: {
+                        'gradient-rock': 'gradient-rock 12s ease infinite',
+                    },
+                    keyframes: {
+                        'gradient-rock': {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                            '100%': { backgroundPosition: '0% 50%' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #080808;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .font-heading {
+            font-family: 'Barlow Condensed', sans-serif;
+            text-transform: uppercase;
+        }
+        .text-glow-yellow {
+            text-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+        }
+        .text-glow-purple {
+            text-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #080808; }
+        ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: #333; }
+    </style>
+
 <script type="importmap">
 {
   "imports": {
