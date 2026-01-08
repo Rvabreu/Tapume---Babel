@@ -10,7 +10,6 @@ import {
   Clock,
   ChevronDown
 } from 'lucide-react';
-import { XisGenerator } from './components/XisGenerator';
 
 const BrandText: React.FC<{ size?: 'sm' | 'md' | 'lg' | 'hero' }> = ({ size = 'md' }) => {
   const sizeClasses = {
@@ -155,25 +154,6 @@ const App: React.FC = () => {
                 <div className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.5em]">{item.label}</div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* AI Experience Section */}
-      <section className="relative z-10 py-32 bg-gradient-to-b from-[#050505] to-[#080808]">
-        <div className="container mx-auto px-6 text-center">
-          <div className="max-w-4xl mx-auto mb-20">
-            <div className="inline-block px-4 py-1 bg-purple-600 text-white text-[10px] font-black uppercase italic rounded-md mb-6">
-              IA EXPERIENCE
-            </div>
-            <h2 className="text-5xl md:text-7xl font-black italic tracking-tighter font-heading mb-8 uppercase">
-              Descubra seu <span className="text-purple-500">Próximo Xis</span>
-            </h2>
-            <p className="text-zinc-400 text-lg leading-relaxed mb-12">
-              Enquanto a chapa não esquenta, peça para nossa Inteligência Artificial criar uma sugestão de Xis personalizada para sua vibe de hoje.
-            </p>
-            
-            <XisGenerator />
           </div>
         </div>
       </section>
