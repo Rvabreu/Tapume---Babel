@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { generateXisIdea } from '../services/geminiService';
 import { LoadingStatus, XisSuggestion } from '../types';
-import { ChefHat, Sparkles, Loader2, RefreshCw, Music } from 'lucide-react';
+import { Sparkles, Loader2, RefreshCw, Music } from 'lucide-react';
 
 export const XisGenerator: React.FC = () => {
   const [mood, setMood] = useState('');

@@ -3,10 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { 
   Instagram, 
   ArrowRight, 
-  MapPin, 
   Flame, 
   Zap, 
-  Truck, 
   ExternalLink, 
   Music, 
   Clock,
