@@ -3,13 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { 
   Instagram, 
   ArrowRight, 
-  MapPin, 
   Flame, 
   Zap, 
-  Truck, 
   ExternalLink, 
   Music, 
-  Clock 
+  Clock,
+  ChevronDown
 } from 'lucide-react';
 
 const BrandText: React.FC<{ size?: 'sm' | 'md' | 'lg' | 'hero' }> = ({ size = 'md' }) => {
@@ -17,20 +16,20 @@ const BrandText: React.FC<{ size?: 'sm' | 'md' | 'lg' | 'hero' }> = ({ size = 'm
     sm: "text-xl md:text-2xl",
     md: "text-3xl md:text-4xl",
     lg: "text-5xl md:text-6xl",
-    hero: "text-7xl md:text-9xl lg:text-[160px]"
+    hero: "text-7xl md:text-9xl lg:text-[180px]"
   };
 
   return (
     <div className="flex flex-col items-center select-none text-center">
-      <h2 className={`${sizeClasses[size]} font-black italic tracking-tighter font-heading leading-none text-white transition-all`}>
+      <h2 className={`${sizeClasses[size]} font-black italic tracking-tighter font-heading leading-none text-white transition-all hover:text-yellow-400 cursor-default`}>
         BABEL
       </h2>
       <div className="flex items-center gap-2 w-full max-w-sm md:max-w-none justify-center">
-        <div className="flex-1 h-[2px] bg-purple-600 hidden md:block"></div>
-        <span className={`${size === 'hero' ? 'text-xl md:text-3xl' : 'text-[10px]'} font-black text-yellow-400 uppercase tracking-[0.4em] leading-none whitespace-nowrap px-2`}>
+        <div className="flex-1 h-[2px] bg-purple-600"></div>
+        <span className={`${size === 'hero' ? 'text-xl md:text-3xl' : 'text-[10px]'} font-black text-yellow-400 uppercase tracking-[0.4em] leading-none whitespace-nowrap px-4`}>
           STUDIO BAR
         </span>
-        <div className="flex-1 h-[2px] bg-purple-600 hidden md:block"></div>
+        <div className="flex-1 h-[2px] bg-purple-600"></div>
       </div>
     </div>
   );
@@ -60,203 +59,174 @@ const App: React.FC = () => {
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) { setSubscribed(true); setEmail(''); }
+    if (email) { 
+      setSubscribed(true); 
+      setEmail(''); 
+    }
   };
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-[#080808]">
-      {/* Background FX */}
+    <div className="min-h-screen relative overflow-x-hidden bg-[#080808] text-white selection:bg-yellow-400 selection:text-black">
+      {/* Texture Overlay */}
+      <div className="fixed inset-0 z-[1] pointer-events-none opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')]"></div>
+      
+      {/* Background Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-10 grayscale"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=1974')" }}
+          className="absolute inset-0 bg-cover bg-center opacity-20 grayscale scale-110 blur-sm"
+          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1555992336-fb0d29498b13?auto=format&fit=crop&q=80&w=2000')" }}
         ></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-transparent to-[#080808]"></div>
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[800px] bg-purple-900/10 blur-[200px] rounded-full"></div>
-        <div className="absolute top-[20%] left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-yellow-500/5 blur-[150px] rounded-full"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-black/60 to-[#080808]"></div>
+        
+        {/* Animated Orbs */}
+        <div className="absolute top-[-10%] left-[-10%] w-[60%] h-[60%] bg-purple-900/20 blur-[120px] rounded-full animate-pulse"></div>
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-yellow-500/10 blur-[150px] rounded-full animate-pulse" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      {/* Header */}
-      <nav className="relative z-10 container mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center gap-6 border-b border-white/5 bg-[#080808]/40 backdrop-blur-xl">
-        <div className="flex items-center gap-6 group cursor-pointer">
-          <BrandText size="sm" />
-          <div className="h-10 w-[1px] bg-white/10 hidden lg:block mx-2"></div>
-          <span className="text-[10px] text-zinc-500 font-bold tracking-[0.4em] uppercase hidden md:block">Passo Fundo / RS</span>
-        </div>
-        
-        <div className="flex items-center gap-4 bg-yellow-400 text-black px-8 py-2.5 rounded-full font-black text-xs uppercase tracking-[0.2em] shadow-[0_0_30px_rgba(251,191,36,0.3)] animate-pulse">
-          <Zap className="w-4 h-4 fill-current mr-2" />
-          ESTREIA 20/01/2026
-        </div>
-      </nav>
-
       {/* Hero Section */}
-      <main className="relative z-10 container mx-auto px-6 pt-16 pb-24 flex flex-col items-center text-center">
-        
-        {/* BRAND CENTER */}
-        <div className="relative mb-20 animate-in fade-in zoom-in duration-1000 group w-full flex justify-center">
-           <div className="absolute inset-0 bg-purple-600/20 rounded-full blur-[120px] opacity-30 scale-150 animate-pulse pointer-events-none"></div>
-           <BrandText size="hero" />
-        </div>
+      <header className="relative z-10 min-h-screen flex flex-col items-center justify-center px-6 py-20">
+        <nav className="absolute top-0 w-full flex justify-between items-center px-10 py-8 max-w-7xl">
+          <BrandText size="sm" />
+          <div className="hidden md:flex items-center gap-6">
+            <span className="text-[10px] text-zinc-500 font-bold tracking-[0.4em] uppercase">PASSO FUNDO • RS</span>
+            <a href="https://www.instagram.com/babelstudiobar/" target="_blank" className="hover:text-yellow-400 transition-colors">
+              <Instagram className="w-5 h-5" />
+            </a>
+          </div>
+        </nav>
 
-        <div className="inline-flex items-center gap-3 px-8 py-3 rounded-full bg-white/5 border border-white/10 mb-10 backdrop-blur-md shadow-[0_0_25px_rgba(168,85,247,0.1)]">
-           <Truck className="w-5 h-5 text-purple-500" />
-           <span className="text-sm font-black text-zinc-100 uppercase tracking-[0.15em]">Sacie sua fome com o xis mais rock n' roll da cidade</span>
-        </div>
+        <div className="w-full max-w-6xl mx-auto flex flex-col items-center text-center">
+          <div className="mb-12 inline-flex items-center gap-3 px-6 py-2 rounded-full bg-yellow-400/10 border border-yellow-400/20 text-yellow-400 text-xs font-black uppercase tracking-widest animate-bounce">
+            <Flame className="w-4 h-4 fill-current" />
+            Em breve: O novo templo do Xis
+          </div>
 
-        <h1 className="text-7xl md:text-[110px] lg:text-[140px] font-black italic tracking-tighter leading-[0.75] font-heading mb-14">
-          <span className="uppercase text-white">PEÇA SEU</span> <span className="text-yellow-400 text-glow-yellow uppercase">XIS,</span><br />
-          <span className="text-purple-600 text-glow-purple lowercase text-[80px] md:text-[130px] lg:text-[160px]">aqui!</span>
-        </h1>
+          <div className="relative mb-8 group">
+            <div className="absolute inset-0 bg-purple-600/30 blur-[100px] opacity-0 group-hover:opacity-50 transition-all duration-700 pointer-events-none"></div>
+            <BrandText size="hero" />
+          </div>
 
-        <div className="max-w-5xl mx-auto space-y-10 mb-24">
-          <p className="text-zinc-400 text-xl md:text-3xl font-black leading-relaxed uppercase tracking-tighter italic">
-            O BABEL STUDIO BAR ESTÁ INICIANDO UMA NOVA FORMA DE ACABAR COM A SUA FOME..
+          <h1 className="text-5xl md:text-8xl lg:text-9xl font-black italic tracking-tighter leading-[0.85] font-heading mb-12">
+            CONSTRUINDO O <br />
+            <span className="text-yellow-400 text-glow-yellow">SABOR SUPREMO</span>
+          </h1>
+
+          <p className="max-w-2xl text-zinc-400 text-lg md:text-xl font-medium leading-relaxed mb-12 uppercase tracking-tight italic">
+            Estamos reformando a cozinha, afinando as guitarras e preparando a chapa. O Babel Studio Bar volta com o Xis que você respeita.
           </p>
-          <div className="border-y-2 border-yellow-400/20 py-10">
-            <span className="text-white font-black italic text-5xl md:text-7xl tracking-tighter uppercase block">Aguardem..</span>
+
+          <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
+            <div className="flex items-center gap-3 px-8 py-4 bg-zinc-900/80 border border-white/5 rounded-2xl backdrop-blur-md">
+              <Zap className="w-5 h-5 text-yellow-400 fill-current" />
+              <span className="font-black italic uppercase tracking-widest text-sm">Estreia 20/01/2026</span>
+            </div>
+            
+            <a href="#countdown" className="flex items-center gap-2 text-zinc-500 hover:text-white transition-all text-xs font-black uppercase tracking-[0.3em] group">
+              Role para ver mais <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+            </a>
           </div>
         </div>
+      </header>
 
-        {/* Countdown */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-32">
-          {[
-            { label: 'Dias', value: timeLeft.days },
-            { label: 'Horas', value: timeLeft.hours },
-            { label: 'Mins', value: timeLeft.minutes },
-            { label: 'Segs', value: timeLeft.seconds },
-          ].map((item, idx) => (
-            <div key={idx} className="relative group">
-              <div className="absolute inset-0 bg-purple-600/30 blur-2xl group-hover:bg-purple-600/50 transition-all opacity-0 group-hover:opacity-100"></div>
-              <div className="relative bg-zinc-900/60 border-b-8 border-yellow-400 p-10 md:p-12 rounded-[2.5rem] w-40 md:w-56 backdrop-blur-md hover:translate-y-[-10px] transition-all duration-500 border border-white/5">
-                <div className="text-6xl md:text-9xl font-black text-white italic font-heading tracking-tighter leading-none">
+      {/* Countdown Section */}
+      <section id="countdown" className="relative z-10 py-32 bg-[#050505]">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col items-center mb-20">
+            <div className="h-20 w-[2px] bg-gradient-to-b from-transparent to-purple-600 mb-8"></div>
+            <h3 className="text-xs font-black text-purple-500 uppercase tracking-[0.6em] italic mb-4">CRONÔMETRO DO ROCK</h3>
+            <div className="text-4xl md:text-6xl font-black italic font-heading tracking-tighter text-white">FALTAM APENAS...</div>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            {[
+              { label: 'Dias', value: timeLeft.days },
+              { label: 'Horas', value: timeLeft.hours },
+              { label: 'Minutos', value: timeLeft.minutes },
+              { label: 'Segundos', value: timeLeft.seconds },
+            ].map((item, idx) => (
+              <div key={idx} className="relative group overflow-hidden bg-zinc-900/40 border border-white/5 p-8 md:p-12 rounded-[3rem] backdrop-blur-sm transition-all hover:border-yellow-400/30">
+                <div className="absolute top-0 right-0 p-4 opacity-[0.03] group-hover:opacity-10 transition-opacity">
+                  <Music className="w-24 h-24 rotate-12" />
+                </div>
+                <div className="text-7xl md:text-9xl font-black text-white italic font-heading tracking-tighter leading-none mb-4">
                   {String(item.value).padStart(2, '0')}
                 </div>
-                <div className="text-[12px] font-black text-zinc-500 uppercase tracking-[0.5em] mt-5">{item.label}</div>
+                <div className="text-[10px] font-black text-zinc-500 uppercase tracking-[0.5em]">{item.label}</div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+      </section>
 
-        {/* VIP Access */}
-        <div className="w-full max-w-3xl mb-12 bg-zinc-900/40 border border-white/10 rounded-[4rem] p-10 md:p-16 shadow-2xl backdrop-blur-sm">
-          <h3 className="text-yellow-400 font-black uppercase text-xl tracking-[0.5em] italic mb-10">LISTA VIP BACKSTAGE</h3>
+      {/* Backstage Access */}
+      <section className="relative z-10 py-32 bg-yellow-400 text-black overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+          <div className="text-[300px] font-black italic font-heading opacity-10 absolute -top-40 -left-20 select-none">BABEL</div>
+        </div>
+        
+        <div className="container mx-auto px-6 relative z-10 text-center">
+          <h2 className="text-4xl md:text-6xl font-black italic tracking-tighter font-heading mb-6 uppercase leading-none">
+            ACESSO AO BACKSTAGE
+          </h2>
+          <p className="text-black/80 text-xl font-bold italic mb-12 uppercase tracking-tight">
+            Seja avisado no minuto que abrirmos as portas.
+          </p>
+
           {!subscribed ? (
-            <form onSubmit={handleSubscribe} className="flex flex-col md:flex-row gap-5">
+            <form onSubmit={handleSubscribe} className="max-w-2xl mx-auto flex flex-col md:flex-row gap-4">
               <input 
                 type="email" 
                 placeholder="SEU MELHOR E-MAIL" 
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 bg-black/60 border-2 border-zinc-800 rounded-3xl px-10 py-7 text-white focus:outline-none focus:border-yellow-400 transition-all placeholder:text-zinc-700 font-black uppercase text-base text-center md:text-left"
+                className="flex-1 bg-black text-white rounded-2xl px-8 py-5 focus:outline-none focus:ring-4 focus:ring-black/20 font-black uppercase tracking-widest text-sm"
               />
-              <button className="bg-yellow-400 text-black font-black px-14 py-7 rounded-3xl hover:bg-white transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center gap-4 shadow-xl">
-                INSCREVER-SE <ArrowRight className="w-7 h-7" />
+              <button className="bg-white text-black font-black px-10 py-5 rounded-2xl hover:bg-black hover:text-white transition-all transform hover:scale-105 active:scale-95 flex items-center justify-center gap-3 shadow-2xl">
+                GARANTIR LUGAR <ArrowRight className="w-5 h-5" />
               </button>
             </form>
           ) : (
-            <div className="bg-purple-600 text-white p-10 rounded-[2.5rem] font-black italic uppercase tracking-[0.2em] animate-in zoom-in duration-500 shadow-2xl">
-              🤘 VOCÊ ESTÁ NA SETLIST! AGUARDE NOVIDADES.
+            <div className="bg-black text-white p-12 rounded-[2.5rem] font-black italic uppercase tracking-[0.2em] animate-in zoom-in duration-500 shadow-2xl inline-block">
+              🤘 VOCÊ ESTÁ NA SETLIST! AGUARDE O SHOW.
             </div>
           )}
         </div>
-      </main>
+      </section>
 
       {/* Footer */}
-      <footer className="relative z-10 bg-[#050505] border-t border-white/5 pt-24 pb-12 overflow-hidden">
-        <div className="container mx-auto px-6 relative z-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-8 items-start">
-            
-            {/* Coluna 1: Marca em texto centralizado */}
-            <div className="md:col-span-5 flex flex-col items-center md:items-start space-y-8">
-              <div className="w-full flex justify-center md:justify-start">
-                <BrandText size="sm" />
-              </div>
-              
-              <div className="space-y-6 text-center md:text-left w-full">
-                <div className="space-y-2">
-                  <p className="text-white text-xl font-black uppercase tracking-tighter italic flex items-center justify-center md:justify-start gap-2">
-                    <Music className="w-5 h-5 text-yellow-400" /> O Sabor que faz Barulho
-                  </p>
-                  <p className="text-zinc-500 font-bold uppercase tracking-[0.1em] text-xs">Música • Coquetéis • Cervejas • Lanches</p>
-                </div>
-                <p className="text-zinc-400 text-base leading-relaxed max-w-sm mx-auto md:mx-0">
-                  O lendário ponto de encontro de Passo Fundo renasce focado na experiência suprema do Xis Gaúcho.
-                </p>
-                <a 
-                  href="https://linktr.ee/babelstudiobar" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center gap-3 bg-white/5 hover:bg-white/10 border border-white/10 px-6 py-3 rounded-full text-yellow-400 transition-all font-black text-xs uppercase tracking-[0.2em] group"
-                >
-                  ACESSAR LINKTREE <ExternalLink className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                </a>
-              </div>
+      <footer className="relative z-10 bg-[#050505] border-t border-white/5 pt-20 pb-10">
+        <div className="container mx-auto px-6">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-12">
+            <div className="flex flex-col items-center md:items-start gap-4">
+              <BrandText size="sm" />
+              <p className="text-zinc-600 text-[10px] font-black uppercase tracking-[0.4em] mt-2">
+                PASSO FUNDO • RIO GRANDE DO SUL
+              </p>
             </div>
 
-            {/* Coluna 2: Social */}
-            <div className="md:col-span-3 flex flex-col items-center py-8 md:py-0">
-              <h4 className="text-xs font-black text-zinc-600 uppercase tracking-[0.5em] mb-10 italic">CONEXÃO DIRETA</h4>
-              <a 
-                href="https://www.instagram.com/babelstudiobar/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex flex-col items-center group"
-              >
-                <div className="relative">
-                  <div className="absolute inset-0 bg-purple-600 blur-2xl opacity-0 group-hover:opacity-40 transition-opacity"></div>
-                  <div className="relative p-8 bg-zinc-900/80 rounded-[2.5rem] text-zinc-400 group-hover:text-white border border-white/5 group-hover:border-purple-500/50 transition-all duration-500 shadow-2xl scale-100 group-hover:scale-110">
-                    <Instagram className="w-12 h-12" />
-                  </div>
+            <div className="flex gap-8">
+              <a href="https://www.instagram.com/babelstudiobar/" target="_blank" className="flex flex-col items-center group">
+                <div className="p-5 bg-zinc-900 rounded-2xl text-zinc-500 group-hover:text-yellow-400 group-hover:bg-zinc-800 transition-all">
+                  <Instagram className="w-8 h-8" />
                 </div>
-                <span className="mt-8 text-yellow-400 font-black uppercase italic tracking-[0.3em] text-sm group-hover:text-white transition-colors">
-                  @babelstudiobar
-                </span>
-                <span className="mt-2 text-[10px] font-bold text-zinc-600 uppercase tracking-widest">Siga no Instagram</span>
+                <span className="text-[10px] font-black uppercase tracking-widest mt-2 opacity-50">Instagram</span>
+              </a>
+              <a href="https://linktr.ee/babelstudiobar" target="_blank" className="flex flex-col items-center group">
+                <div className="p-5 bg-zinc-900 rounded-2xl text-zinc-500 group-hover:text-yellow-400 group-hover:bg-zinc-800 transition-all">
+                  <ExternalLink className="w-8 h-8" />
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-widest mt-2 opacity-50">Linktree</span>
               </a>
             </div>
 
-            {/* Coluna 3: Localização */}
-            <div className="md:col-span-4 flex flex-col items-center md:items-end space-y-8 text-center md:text-right">
-              <div className="bg-zinc-900/30 border border-white/5 p-8 rounded-[2rem] w-full max-w-xs space-y-6">
-                <div className="space-y-2">
-                  <h4 className="text-xs font-black text-zinc-600 uppercase tracking-[0.3em]">LOCALIZAÇÃO</h4>
-                  <p className="text-white text-2xl font-black italic tracking-tighter flex items-center justify-center md:justify-end gap-2">
-                    PASSO FUNDO <MapPin className="w-5 h-5 text-purple-500" />
-                  </p>
-                  <p className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.4em]">Rio Grande do Sul</p>
-                </div>
-                <div className="h-[1px] bg-white/5 w-full"></div>
-                <div className="space-y-2">
-                  <h4 className="text-xs font-black text-zinc-600 uppercase tracking-[0.3em]">STATUS ATUAL</h4>
-                  <div className="flex items-center justify-center md:justify-end gap-2 text-yellow-400 font-black italic text-sm">
-                    <Clock className="w-4 h-4" /> EM CONSTRUÇÃO
-                  </div>
-                </div>
+            <div className="text-center md:text-right">
+              <div className="flex items-center justify-center md:justify-end gap-2 text-yellow-400 font-black italic text-sm uppercase tracking-widest mb-2">
+                <Clock className="w-4 h-4" /> EM CONSTRUÇÃO
               </div>
-            </div>
-          </div>
-
-          {/* Bottom Bar */}
-          <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
-            <div className="flex flex-col md:flex-row items-center gap-4">
-              <span className="text-zinc-600 text-[10px] uppercase font-black tracking-[0.3em]">
-                Babel Studio Bar © 2026
-              </span>
-              <div className="hidden md:block w-1.5 h-1.5 bg-zinc-800 rounded-full"></div>
-              <span className="text-zinc-700 text-[9px] uppercase font-bold tracking-[0.2em]">
-                O XIS MAIS ROCK N' ROLL DO PLANALTO MÉDIO
-              </span>
-            </div>
-            
-            <div className="flex items-center gap-4 bg-black/40 px-6 py-3 rounded-full border border-white/5 group hover:border-orange-500/30 transition-colors">
-              <span className="text-zinc-500 text-[9px] font-black uppercase tracking-widest group-hover:text-zinc-300 transition-colors">
-                Powered by AI Experience
-              </span>
-              <div className="flex items-center gap-1">
-                <Flame className="w-4 h-4 text-orange-600 fill-current animate-pulse" />
-              </div>
+              <p className="text-zinc-700 text-[9px] font-bold uppercase tracking-widest">
+                BABEL STUDIO BAR © 2026 • TODOS OS DIREITOS RESERVADOS
+              </p>
             </div>
           </div>
         </div>

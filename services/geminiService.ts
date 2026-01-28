@@ -33,7 +33,11 @@ export const generateXisIdea = async (mood: string) => {
     if (!text) {
       throw new Error("Resposta vazia do modelo");
     }
-    return JSON.parse(text);
+
+    // Clean up potential markdown code blocks (```json ... ```) which cause JSON.parse to fail
+    const cleanText = text.replace(/```json\n?|\n?```/g, '').trim();
+
+    return JSON.parse(cleanText);
   } catch (error) {
     console.error("Erro ao gerar xis:", error);
     throw error;

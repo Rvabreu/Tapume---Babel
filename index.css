@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Estilos globais migrados do index.html */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #080808;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+.font-heading {
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+}
+
+.text-glow-yellow {
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
+}
+
+.text-glow-purple {
+    text-shadow: 0 0 20px rgba(168, 85, 247, 0.6);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #080808; }
+::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #333; }

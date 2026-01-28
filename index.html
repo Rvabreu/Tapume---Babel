@@ -1,14 +1,30 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Babel Studio Bar | O Novo Xis está chegando</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    
+    <script>
+        // Suppress Tailwind CDN production warning to keep console clean
+        (function() {
+            const originalWarn = console.warn;
+            console.warn = function(...args) {
+                if (args.some(arg => typeof arg === 'string' && arg.includes('cdn.tailwindcss.com'))) {
+                    return;
+                }
+                originalWarn.apply(console, args);
+            };
+        })();
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Space+Grotesk:wght@300;500;700&family=Barlow+Condensed:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
+
     <script>
         tailwind.config = {
             theme: {
@@ -17,10 +33,21 @@
                         sans: ['Inter', 'sans-serif'],
                         heading: ['Barlow Condensed', 'sans-serif'],
                     },
+                    animation: {
+                        'gradient-rock': 'gradient-rock 12s ease infinite',
+                    },
+                    keyframes: {
+                        'gradient-rock': {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                            '100%': { backgroundPosition: '0% 50%' },
+                        }
+                    }
                 }
             }
         }
     </script>
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -31,16 +58,6 @@
         .font-heading {
             font-family: 'Barlow Condensed', sans-serif;
             text-transform: uppercase;
-        }
-        @keyframes gradient-rock {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .animate-gradient-rock {
-            background: linear-gradient(-45deg, #fbbf24, #a855f7, #7e22ce, #000000);
-            background-size: 400% 400%;
-            animation: gradient-rock 12s ease infinite;
         }
         .text-glow-yellow {
             text-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
@@ -54,19 +71,23 @@
         ::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #333; }
     </style>
+
 <script type="importmap">
 {
   "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
     "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "vite": "https://esm.sh/vite@^7.3.1",
     "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3"
+    "react": "https://esm.sh/react@^19.2.3",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
 <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>
